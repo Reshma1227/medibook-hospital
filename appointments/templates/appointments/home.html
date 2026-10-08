@@ -1,0 +1,34 @@
+{% extends 'appointments/base.html' %}
+{% block title %}Find a Doctor - MediBook{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <h1>Book your doctor appointment online</h1>
+    <p>Choose a specialization, pick a doctor, and reserve a time slot in seconds.</p>
+</section>
+
+<form method="get" class="filter-bar">
+    <label for="specialization">Specialization:</label>
+    <select name="specialization" id="specialization" onchange="this.form.submit()">
+        <option value="">All</option>
+        {% for s in specializations %}
+            <option value="{{ s }}" {% if s == selected %}selected{% endif %}>{{ s }}</option>
+        {% endfor %}
+    </select>
+    <noscript><button type="submit" class="btn btn-small">Filter</button></noscript>
+</form>
+
+<div class="grid">
+    {% for doctor in doctors %}
+        <div class="card">
+            <div class="avatar">{{ doctor.name|slice:":1" }}</div>
+            <h3>Dr. {{ doctor.name }}</h3>
+            <p class="tag">{{ doctor.specialization }}</p>
+            <p class="fee">Consultation fee: Rs. {{ doctor.fee }}</p>
+            <a href="{% url 'book' doctor.id %}" class="btn">Book Appointment</a>
+        </div>
+    {% empty %}
+        <p>No doctors found for this specialization.</p>
+    {% endfor %}
+</div>
+{% endblock %}

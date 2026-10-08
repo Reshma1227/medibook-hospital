@@ -1,0 +1,28 @@
+{% extends 'appointments/base.html' %}
+{% block title %}Book Appointment - MediBook{% endblock %}
+
+{% block content %}
+<div class="form-box">
+    <h2>Book with Dr. {{ doctor.name }}</h2>
+    <p class="tag">{{ doctor.specialization }}</p>
+    <p class="fee">Consultation fee: Rs. {{ doctor.fee }}</p>
+
+    <form method="post">
+        {% csrf_token %}
+        {% if form.non_field_errors %}
+            <div class="alert alert-error">{{ form.non_field_errors }}</div>
+        {% endif %}
+
+        <label for="{{ form.date.id_for_label }}">Date</label>
+        {{ form.date }}
+        {{ form.date.errors }}
+
+        <label for="{{ form.slot.id_for_label }}">Time slot</label>
+        {{ form.slot }}
+        {{ form.slot.errors }}
+
+        <button type="submit" class="btn">Confirm Booking</button>
+        <a href="{% url 'home' %}" class="btn btn-outline">Back</a>
+    </form>
+</div>
+{% endblock %}

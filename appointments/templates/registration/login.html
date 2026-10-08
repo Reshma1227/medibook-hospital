@@ -1,0 +1,20 @@
+{% extends 'appointments/base.html' %}
+{% block title %}Login - MediBook{% endblock %}
+
+{% block content %}
+<div class="form-box">
+    <h2>Login</h2>
+    <form method="post">
+        {% csrf_token %}
+        {% if form.errors %}
+            <div class="alert alert-error">Incorrect username or password.</div>
+        {% endif %}
+        <label for="{{ form.username.id_for_label }}">Username</label>
+        {{ form.username }}
+        <label for="{{ form.password.id_for_label }}">Password</label>
+        {{ form.password }}
+        <button type="submit" class="btn">Login</button>
+    </form>
+    <p>New patient? <a href="{% url 'signup' %}">Create an account</a></p>
+</div>
+{% endblock %}
