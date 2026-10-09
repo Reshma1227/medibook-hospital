@@ -1,34 +1,105 @@
 {% extends 'appointments/base.html' %}
-{% block title %}Find a Doctor - MediBook{% endblock %}
+
+{% block title %}MediCare Plus | Book Doctor Appointments{% endblock %}
 
 {% block content %}
+
 <section class="hero">
-    <h1>Book your doctor appointment online</h1>
-    <p>Choose a specialization, pick a doctor, and reserve a time slot in seconds.</p>
+    <p class="hero-label">✚ YOUR HEALTH, OUR PRIORITY</p>
+
+```
+<h1>Welcome to MediCare Plus Hospital</h1>
+
+<p>
+    Find the right doctor for your needs. Explore specializations
+    and book your appointment online with ease.
+</p>
+
+<div class="hero-actions">
+    <a href="#doctors" class="btn">Find a Doctor</a>
+</div>
+
+<div class="hero-features">
+    <span>✓ Experienced Doctors</span>
+    <span>✓ Easy Online Booking</span>
+    <span>✓ Patient-Friendly Care</span>
+</div>
+```
+
 </section>
+
+<section class="doctors-section" id="doctors">
+
+```
+<div class="section-heading">
+    <p class="section-label">OUR MEDICAL TEAM</p>
+    <h2>Find Your Specialist</h2>
+    <p>Choose a specialization and find a doctor for your appointment.</p>
+</div>
 
 <form method="get" class="filter-bar">
     <label for="specialization">Specialization:</label>
-    <select name="specialization" id="specialization" onchange="this.form.submit()">
-        <option value="">All</option>
+
+    <select name="specialization"
+            id="specialization"
+            onchange="this.form.submit()">
+
+        <option value="">All Specializations</option>
+
         {% for s in specializations %}
-            <option value="{{ s }}" {% if s == selected %}selected{% endif %}>{{ s }}</option>
+            <option value="{{ s }}"
+                {% if s == selected %}selected{% endif %}>
+                {{ s }}
+            </option>
         {% endfor %}
+
     </select>
-    <noscript><button type="submit" class="btn btn-small">Filter</button></noscript>
+
+    <noscript>
+        <button type="submit" class="btn btn-small">Filter</button>
+    </noscript>
 </form>
 
 <div class="grid">
+
     {% for doctor in doctors %}
-        <div class="card">
-            <div class="avatar">{{ doctor.name|slice:":1" }}</div>
+
+        <div class="card doctor-card">
+
+            <div class="avatar">
+                {{ doctor.name|slice:":1" }}
+            </div>
+
+            <p class="doctor-label">AVAILABLE SPECIALIST</p>
+
             <h3>Dr. {{ doctor.name }}</h3>
+
             <p class="tag">{{ doctor.specialization }}</p>
-            <p class="fee">Consultation fee: Rs. {{ doctor.fee }}</p>
-            <a href="{% url 'book' doctor.id %}" class="btn">Book Appointment</a>
+
+            <p class="fee">
+                Consultation fee:
+                <strong>₹{{ doctor.fee }}</strong>
+            </p>
+
+            <a href="{% url 'book' doctor.id %}" class="btn">
+                Book Appointment
+            </a>
+
         </div>
+
     {% empty %}
-        <p>No doctors found for this specialization.</p>
+
+        <div class="card">
+            <h3>No doctors found</h3>
+            <p>Please choose another specialization or select All Specializations.</p>
+            <a href="{% url 'home' %}" class="btn">View All Doctors</a>
+        </div>
+
     {% endfor %}
+
 </div>
+```
+
+</section>
+
 {% endblock %}

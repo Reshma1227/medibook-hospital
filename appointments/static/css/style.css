@@ -126,3 +126,322 @@ a { color: var(--blue-700); }
     .navbar { padding: 12px 16px; }
     .table { font-size: 0.85rem; }
 }
+
+/* ===== MediCare Plus - Modern Hospital Theme ===== */
+
+:root {
+    --primary: #0878c9;
+    --primary-dark: #07518b;
+    --accent: #16b8aa;
+    --background: #f4f9fd;
+    --text: #17324d;
+    --muted: #64748b;
+    --white: #ffffff;
+    --border: #e0edf6;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: var(--text);
+    background: var(--background);
+    line-height: 1.6;
+    margin: 0;
+}
+
+h1, h2, h3, h4 {
+    color: var(--primary-dark);
+    line-height: 1.25;
+}
+
+a {
+    transition: color 0.2s ease;
+}
+
+button, .button, a.button {
+    background: linear-gradient(135deg, #0786d7, #0867b2);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 11px 20px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button:hover, .button:hover, a.button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 18px rgba(8, 120, 201, 0.2);
+}
+
+/* Cards */
+.card, .doctor-card, .specialty-card, .appointment-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 5px 18px rgba(28, 73, 110, 0.06);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover, .doctor-card:hover, .specialty-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(28, 73, 110, 0.12);
+}
+
+/* Form fields */
+input, select, textarea {
+    max-width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #cfdeeb;
+    border-radius: 9px;
+    padding: 11px 12px;
+    font: inherit;
+    background: white;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: 2px solid rgba(8, 120, 201, 0.2);
+    border-color: var(--primary);
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+th {
+    background: #e8f4fc;
+    color: var(--primary-dark);
+    text-align: left;
+}
+
+th, td {
+    padding: 13px;
+    border-bottom: 1px solid var(--border);
+}
+
+/* Hospital banner image */
+.hospital-banner {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 18px;
+    object-fit: cover;
+}
+
+/* Mobile-friendly design */
+img {
+    max-width: 100%;
+}
+
+@media (max-width: 700px) {
+    .card, .doctor-card, .specialty-card, .appointment-card {
+        padding: 14px;
+    }
+
+    th, td {
+        padding: 9px;
+        font-size: 14px;
+    }
+
+    button, .button, a.button {
+        max-width: 100%;
+    }
+}
+
+/* MediCare Plus header improvements */
+
+.navbar {
+    background: #ffffff;
+    color: #17324d;
+    border-bottom: 1px solid #e0edf6;
+    box-shadow: 0 4px 18px rgba(11, 42, 91, 0.08);
+    padding: 15px 5%;
+}
+
+.navbar a {
+    color: #17324d;
+    text-decoration: none;
+}
+
+.navbar .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.brand-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #0878c9, #16b8aa);
+    color: #ffffff;
+    font-size: 24px;
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-text strong {
+    color: #07518b;
+    font-size: 20px;
+}
+
+.brand-text small {
+    color: #64748b;
+    font-size: 11px;
+}
+
+.navbar nav {
+    gap: 14px;
+}
+
+.navbar .btn,
+.navbar .btn-small {
+    background: #0878c9;
+    color: #ffffff;
+    border-color: #0878c9;
+}
+
+.navbar .link-btn {
+    color: #0878c9;
+}
+
+.footer {
+    background: #0b2a5b;
+    color: #ffffff;
+    padding: 25px 16px;
+    line-height: 1.8;
+}
+
+@media (max-width: 640px) {
+    .navbar {
+        justify-content: center;
+        padding: 14px;
+    }
+
+    .navbar nav {
+        justify-content: center;
+    }
+}
+
+/* MediCare Plus homepage improvements */
+
+.hero {
+    background: linear-gradient(125deg, #07518b, #0878c9, #16b8aa);
+    color: #ffffff;
+    padding: 44px 32px;
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(8, 120, 201, 0.15);
+}
+
+.hero h1 {
+    color: #ffffff;
+    font-size: clamp(28px, 4vw, 42px);
+    margin: 12px 0;
+}
+
+.hero p {
+    max-width: 650px;
+    line-height: 1.8;
+}
+
+.hero .hero-label,
+.section-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.hero .hero-actions {
+    margin-top: 24px;
+}
+
+.hero .hero-actions .btn {
+    background: #ffffff;
+    color: #07518b;
+    border: 2px solid #ffffff;
+}
+
+.hero .hero-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 24px;
+    margin-top: 25px;
+    font-size: 14px;
+}
+
+.doctors-section {
+    padding-top: 24px;
+}
+
+.section-heading {
+    margin: 28px 0 22px;
+}
+
+.section-heading h2 {
+    font-size: 30px;
+    margin: 5px 0;
+}
+
+.section-heading p {
+    color: #64748b;
+}
+
+.section-heading .section-label {
+    color: #0878c9;
+}
+
+.doctor-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.doctor-card h3 {
+    margin: 0;
+}
+
+.doctor-card .doctor-label {
+    color: #0878c9;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin: 4px 0 0;
+}
+
+.doctor-card .fee {
+    margin-top: 4px;
+}
+
+.doctor-card .btn {
+    margin-top: auto;
+}
+
+@media (max-width: 640px) {
+    .hero {
+        padding: 28px 20px;
+    }
+
+    .section-heading h2 {
+        font-size: 25px;
+    }
+
+    .hero .hero-features {
+        flex-direction: column;
+        gap: 8px;
+    }
+}
